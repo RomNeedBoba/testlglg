@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4TUNES</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+            font-family: 'FBI';
+            src: url('FBI.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'FBI', sans-serif;
+        }
+
+        body,
+        html {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: black;
+            /* Fallback background color */
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 6rem;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .overlay .input-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .overlay input {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px 0 0 5px;
+            border: none;
+            width: 200px;
+        }
+
+        .overlay button {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 0 5px 5px 0;
+            border: none;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 1rem;
+            margin-top: 10px;
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="Bank_Image/Rom.jpg" alt="Pink Sky Dallas">
+        <div class="overlay">
+            FBI WARNING
+            <div class="input-container">
+                <input type="password" id="password" placeholder="Enter password">
+                <button id="submit-button">Enter</button>
+            </div>
+            <p 
+           style="font-size: 42px;" id="error-message" class="error-message">Kabooooooooooooooooooooooooooooooooooooom</p>
+        </div>
+    </div>
+    <audio autoplay loop hidden>
+        <source src="carti.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        document.getElementById('submit-button').addEventListener('click', function() {
+    var password = document.getElementById('password').value;
+    var correctPassword = 'superrom123@123'; // Replace with your desired password
+
+    if (password === correctPassword) {
+        localStorage.setItem('authenticated', 'true');
+        console.log('Password correct. Redirecting to password.html');
+        window.location.href = 'password.html'; // Redirect to your home page
+    } else {
+        document.getElementById('error-message').style.display = 'block';
+    }
+});
+
+        // Optionally, handle Enter key for password input
+        document.getElementById('password').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                document.getElementById('submit-button').click();
+            }
+        });
+
+
+    </script>
+</body>
+</html>
